@@ -1,0 +1,5 @@
+age,income,loan_amount,credit_score,employment_status,target_variable
+25,50000,10000,700,Employed,0
+35,75000,15000,650,Self-Employed,1
+45,100000,20000,600,Employed,0
+28,60000,12000,720,Unemployed,1
