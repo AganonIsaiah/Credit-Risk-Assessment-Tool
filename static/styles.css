@@ -1,0 +1,85 @@
+h1 {
+    text-align: center;
+    color: #007BFF; /* Header text color */
+    background-color: #ffffff; /* Header background color */
+    padding: 20px;
+    margin: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Dataset Table Styling */
+.dataset-title{
+    font-family: 'Arial', sans-serif;
+}
+
+#dataset-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#dataset-table th, #dataset-table td {
+    font-family: 'Arial', sans-serif;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Predicted Table styling */
+.DPS-title{
+    font-family: 'Arial', sans-serif;
+}
+
+#predicted-table {
+    width: auto;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#predicted-table th, #predicted-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+ /* Accuracy Table styling */
+.accuracy-table {
+    font-family: 'Arial', sans-serif;
+}
+
+.accuracy-table pre {
+    display: inline-block; /* Make it behave like an inline block */
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd; /* Border color */
+}
+
+/* Information Section styling */
+.information-section {
+    position: absolute;
+    top: calc(100% + 20px ); /* Adjust the distance from the DPS-title as needed */
+    left: 35%; /* Adjust the distance from the DPS-title as needed */
+    flex-wrap: wrap;
+    font-family: 'Arial', sans-serif;
+}
+
+.information-section p {
+    width: 810px; /* Each paragraph takes the full width */
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: content-box; /* Include only content in the width, not padding and border */
+}

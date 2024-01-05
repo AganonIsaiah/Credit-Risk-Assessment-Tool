@@ -1,23 +1,68 @@
-# main.py
-from data_preprocessing import load_data, clean_and_preprocess_data, split_data
-from model_building import build_and_optimize_model
-from model_evaluation import evaluate_model
+from flask import Flask, render_template
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score, classification_report
 
-def main():
-    # Step 1: Gather and load the data
-    data = load_data()
+app = Flask(__name__)
 
-    # Step 2: Data cleaning and preprocessing
-    data = clean_and_preprocess_data(data)
+# Load the dataset
+file_path = 'credit_data.csv'
+df = pd.read_csv(file_path)
 
-    # Step 3: Split the data
-    X_train, X_test, y_train, y_test = split_data(data)
+# Encode categorical variables
+label_encoder = LabelEncoder()
+categorical_columns = ['Gender', 'MaritalStatus', 'EmploymentStatus']
+for col in categorical_columns:
+    df[col] = label_encoder.fit_transform(df[col])
 
-    # Step 4: Build and optimize the model
-    model = build_and_optimize_model(X_train, y_train)
+# Separate features (X) and target variable (y)
+X = df.drop(['Name', 'DefaultStatus'], axis=1)
+y = df['DefaultStatus']
 
-    # Step 5: Evaluate the model
-    evaluate_model(model, X_test, y_test)
+# Train a Logistic Regression model
+model = LogisticRegression()
+model.fit(X, y)
 
-if __name__ == "__main__":
-    main()
+# Make predictions for each person
+predictions = model.predict(X)
+df['PredictedStatus'] = predictions
+
+# Calculate accuracy
+accuracy = accuracy_score(y, predictions)
+report = classification_report(y, predictions)
+
+# Testing accuracy table
+print("Accuracy Table:")
+print(f"Accuracy: {accuracy}")
+print("Classification Report:")
+print(report)
+
+# Prepare data for rendering
+accuracy_data = {
+    'accuracy': accuracy,
+    'classification_report': report
+}
+
+predictions_data = {}
+for _, person in df.iterrows():
+    person_features = person.drop(['Name', 'DefaultStatus', 'PredictedStatus'])
+    person_name = person['Name']
+    
+    # Use a DataFrame with feature names for prediction
+    person_df = pd.DataFrame([person_features], columns=X.columns)
+    
+    # Make predictions
+    prediction = model.predict(person_df)[0]
+    
+    # Interpret the prediction
+    prediction_result = "likely to default" if prediction == 1 else "not likely to default"
+    
+    predictions_data[person_name] = prediction_result
+
+@app.route('/')
+def index():
+    return render_template('index.html', data=df.to_html(), accuracy=accuracy_data, predictions=predictions_data, df=df)
+
+if __name__ == '__main__':
+    app.run(debug=True)

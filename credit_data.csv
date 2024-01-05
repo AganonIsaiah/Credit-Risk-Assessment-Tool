@@ -1,5 +1,4 @@
-age,income,loan_amount,credit_score,employment_status,target_variable
-25,50000,10000,700,Employed,0
-35,75000,15000,650,Self-Employed,1
-45,100000,20000,600,Employed,0
-28,60000,12000,720,Unemployed,1
+Name,Age,Gender,MaritalStatus,Income,EmploymentStatus,CreditScore,OpenCreditLines,TotalCreditLimit,LatePayments,TotalDebt,MonthlyDebtPayments,AssetValue,DefaultStatus
+PersonA,28,Female,Single,6000,Full-time,720,4,18000,0,2500,900,12000,0
+PersonB,40,Male,Married,10000,Part-time,680,6,25000,1,6000,1500,35000,1
+PersonC,32,Female,Divorced,8000,Self-employed,750,8,35000,0,4000,1200,55000,0
