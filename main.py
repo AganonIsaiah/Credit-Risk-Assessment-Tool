@@ -1,68 +1,62 @@
-from flask import Flask, render_template
+from io import StringIO
+import os
+from flask import Flask, render_template, request, redirect, url_for
+from werkzeug.utils import secure_filename
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import accuracy_score, classification_report
+
+from analysis import analyze_credit_data
 
 app = Flask(__name__)
 
-# Load the dataset
-file_path = 'credit_data.csv'
-df = pd.read_csv(file_path)
+# Configuration settings
+app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'sampledatasets')
+app.config['ALLOWED_EXTENSIONS'] = {'csv'}
+app.config['SECRET_KEY'] = 'secretkey' 
 
-# Encode categorical variables
-label_encoder = LabelEncoder()
-categorical_columns = ['Gender', 'MaritalStatus', 'EmploymentStatus']
-for col in categorical_columns:
-    df[col] = label_encoder.fit_transform(df[col])
-
-# Separate features (X) and target variable (y)
-X = df.drop(['Name', 'DefaultStatus'], axis=1)
-y = df['DefaultStatus']
-
-# Train a Logistic Regression model
-model = LogisticRegression()
-model.fit(X, y)
-
-# Make predictions for each person
-predictions = model.predict(X)
-df['PredictedStatus'] = predictions
-
-# Calculate accuracy
-accuracy = accuracy_score(y, predictions)
-report = classification_report(y, predictions)
-
-# Testing accuracy table
-print("Accuracy Table:")
-print(f"Accuracy: {accuracy}")
-print("Classification Report:")
-print(report)
-
-# Prepare data for rendering
-accuracy_data = {
-    'accuracy': accuracy,
-    'classification_report': report
-}
-
-predictions_data = {}
-for _, person in df.iterrows():
-    person_features = person.drop(['Name', 'DefaultStatus', 'PredictedStatus'])
-    person_name = person['Name']
-    
-    # Use a DataFrame with feature names for prediction
-    person_df = pd.DataFrame([person_features], columns=X.columns)
-    
-    # Make predictions
-    prediction = model.predict(person_df)[0]
-    
-    # Interpret the prediction
-    prediction_result = "likely to default" if prediction == 1 else "not likely to default"
-    
-    predictions_data[person_name] = prediction_result
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() == 'csv'
 
 @app.route('/')
+def start():
+    return render_template('start.html')
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if 'file' not in request.files:
+        return redirect(url_for('start'))
+
+    file = request.files['file']
+
+    if file.filename == '' or not allowed_file(file.filename):
+        return redirect(url_for('start'))
+
+    filename = secure_filename(file.filename)
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    file.save(file_path)
+
+    df, accuracy_data, predictions_data = analyze_credit_data(file_path)
+
+    print("Accuracy Table:")
+    print(f"Accuracy: {accuracy_data['accuracy']}")
+    print(f"Classification Report:\n{accuracy_data['classification_report']}")
+
+    return render_template('index.html', df=df, accuracy=accuracy_data, predictions=predictions_data)
+
+
+@app.route('/index')
 def index():
-    return render_template('index.html', data=df.to_html(), accuracy=accuracy_data, predictions=predictions_data, df=df)
+    data = request.args.get('data', '')
+    accuracy_data = {
+        'accuracy': request.args.get('accuracy', ''),
+        'classification_report': request.args.get('classification_report', '')
+    }
+
+    if data:
+        df = pd.read_html(StringIO(data), index_col=0)[0]
+        return render_template('index.html', df=df, accuracy=accuracy_data, predictions=request.args.get('predictions', ''))
+    else:
+        return redirect(url_for('start'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

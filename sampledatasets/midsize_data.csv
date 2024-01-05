@@ -1,0 +1,8 @@
+Name,Age,Gender,MaritalStatus,Income,EmploymentStatus,CreditScore,OpenCreditLines,TotalCreditLimit,LatePayments,TotalDebt,MonthlyDebtPayments,AssetValue,DefaultStatus
+PersonC,32,Female,Divorced,8000,Self-employed,750,8,35000,0,4000,1200,55000,0
+PersonD,35,Male,Single,9000,Full-time,700,5,20000,2,8000,1800,18000,1
+PersonE,45,Female,Married,12000,Part-time,720,7,30000,0,5000,1000,40000,0
+PersonF,29,Male,Single,7500,Self-employed,680,3,15000,1,3000,800,25000,0
+PersonG,38,Female,Married,11000,Full-time,700,6,25000,2,7000,1500,30000,1
+PersonH,42,Male,Divorced,9500,Part-time,680,4,20000,0,4000,1200,40000,0
+PersonI,33,Female,Single,8500,Self-employed,720,7,30000,1,5500,1300,35000,1
