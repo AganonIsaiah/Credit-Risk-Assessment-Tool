@@ -1,0 +1,161 @@
+/* Header styling */
+h1 {
+    text-align: left;
+    color: #007BFF;
+    background-color: white;
+    padding: 20px;
+    margin: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Container for the main content */
+.main-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Colours */
+body {
+    background-color: #f4f4f4;
+}
+
+#dataset-table,
+#predicted-table,
+.accuracy-table pre,
+.information-section p {
+    background-color: #ffffff;
+}
+
+/* Dataset Table Styling */
+.dataset-title {
+    font-family: 'Arial', sans-serif;
+}
+
+#dataset-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#dataset-table th,
+#dataset-table td {
+    font-family: 'Arial', sans-serif;
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Predicted Table styling */
+.DPS-title {
+    font-family: 'Arial', sans-serif;
+}
+
+#predicted-table {
+    width: auto;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+#predicted-table th,
+#predicted-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Accuracy Table styling */
+.accuracy-table {
+    font-family: 'Arial', sans-serif;
+}
+
+.accuracy-table pre {
+    display: inline-block;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Information Section styling */
+.information-section {
+    position: absolute;
+    top: calc(100%);
+    left: 35%;
+    flex-wrap: wrap;
+    font-family: 'Arial', sans-serif;
+}
+
+.information-section p {
+    width: 810px;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: content-box;
+}
+
+/* Buttons */
+#dataset-table,
+#predicted-table {
+    display: none;
+}
+
+.toggle-button {
+    margin-top: 10px;
+}
+
+.toggle-button button {
+    width: 220px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button :hover {
+    background-color: #0056b3;
+}
+
+a button {
+    width: 200px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+    margin: auto;
+    position: absolute;
+    left: 90%;
+    transform: translate(-50%, -150%);
+}
+
+a button :hover {
+    background-color: #0056b3;
+}
