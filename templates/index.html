@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,7 @@
     <title>Credit Risk Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var dpsTitleElement = document.querySelector('.DPS-title');
             var informationSection = document.querySelector('.information-section');
             var datasetTable = document.getElementById('dataset-table');
@@ -17,12 +18,12 @@
                 table.style.display = (table.style.display === 'none' || table.style.display === '') ? 'table' : 'none';
             }
 
-            document.getElementById('toggle-dataset-table').addEventListener('click', function() {
+            document.getElementById('toggle-dataset-table').addEventListener('click', function () {
                 toggleTableVisibility(datasetTable);
                 updateInformationSectionPosition();
             });
 
-            document.getElementById('toggle-predicted-table').addEventListener('click', function() {
+            document.getElementById('toggle-predicted-table').addEventListener('click', function () {
                 toggleTableVisibility(predictedTable);
                 updateInformationSectionPosition();
             });
@@ -35,104 +36,109 @@
         });
     </script>
 </head>
+
 <body>
     <h1>Credit Risk Predictor</h1>
 
-    
+
     <div class="back-button-container">
         <a href="{{ url_for('start') }}"><button><strong>Back to Start</strong></button></a>
     </div>
-    <div class ="main-container"> 
-    <div class="container section-box">
-        <h2 class="dataset-title">Dataset</h2>
+    <div class="main-container">
+        <div class="container section-box">
+            <h2 class="dataset-title">Dataset</h2>
 
-        <div class="toggle-button">
-            <button id="toggle-dataset-table"><Strong>View Dataset Table</Strong></button>
+            <div class="toggle-button">
+                <button id="toggle-dataset-table"><Strong>View Dataset Table</Strong></button>
+            </div>
+
+            <table id="dataset-table" border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>MaritalStatus</th>
+                        <th>Income</th>
+                        <th>EmploymentStatus</th>
+                        <th>CreditScore</th>
+                        <th>OpenCreditLines</th>
+                        <th>TotalCreditLimit</th>
+                        <th>LatePayments</th>
+                        <th>TotalDebt</th>
+                        <th>MonthlyDebtPayments</th>
+                        <th>AssetValue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for _, person in df.iterrows() %}
+                    <tr>
+                        <td>{{ person['Name'] }}</td>
+                        <td>{{ person['Age'] }}</td>
+                        <td>{{ person['Gender'] }}</td>
+                        <td>{{ person['MaritalStatus'] }}</td>
+                        <td>{{ person['Income'] }}</td>
+                        <td>{{ person['EmploymentStatus'] }}</td>
+                        <td>{{ person['CreditScore'] }}</td>
+                        <td>{{ person['OpenCreditLines'] }}</td>
+                        <td>{{ person['TotalCreditLimit'] }}</td>
+                        <td>{{ person['LatePayments'] }}</td>
+                        <td>{{ person['TotalDebt'] }}</td>
+                        <td>{{ person['MonthlyDebtPayments'] }}</td>
+                        <td>{{ person['AssetValue'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
 
-        <table id="dataset-table" border="1">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>MaritalStatus</th>
-                    <th>Income</th>
-                    <th>EmploymentStatus</th>
-                    <th>CreditScore</th>
-                    <th>OpenCreditLines</th>
-                    <th>TotalCreditLimit</th>
-                    <th>LatePayments</th>
-                    <th>TotalDebt</th>
-                    <th>MonthlyDebtPayments</th>
-                    <th>AssetValue</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for _, person in df.iterrows() %}
-                <tr>
-                    <td>{{ person['Name'] }}</td>
-                    <td>{{ person['Age'] }}</td>
-                    <td>{{ person['Gender'] }}</td>
-                    <td>{{ person['MaritalStatus'] }}</td>
-                    <td>{{ person['Income'] }}</td>
-                    <td>{{ person['EmploymentStatus'] }}</td>
-                    <td>{{ person['CreditScore'] }}</td>
-                    <td>{{ person['OpenCreditLines'] }}</td>
-                    <td>{{ person['TotalCreditLimit'] }}</td>
-                    <td>{{ person['LatePayments'] }}</td>
-                    <td>{{ person['TotalDebt'] }}</td>
-                    <td>{{ person['MonthlyDebtPayments'] }}</td>
-                    <td>{{ person['AssetValue'] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+        <div class="container section-box">
+            <h2 class="DPS-title">Default and Predicted Status</h2>
 
-    <div class="container section-box">
-        <h2 class="DPS-title">Default and Predicted Status</h2>
+            <div class="toggle-button">
+                <button id="toggle-predicted-table"><Strong>View Predicted Table</Strong></button>
+            </div>
 
-        <div class="toggle-button">
-            <button id="toggle-predicted-table"><Strong>View Predicted Table</Strong></button>
+            <table id="predicted-table" border="1" class="small-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>DefaultStatus</th>
+                        <th>PredictedStatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for _, person in df.iterrows() %}
+                    <tr>
+                        <td>{{ person['Name'] }}</td>
+                        <td>{{ person['DefaultStatus'] }}</td>
+                        <td>{{ person['PredictedStatus'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
 
-        <table id="predicted-table" border="1" class="small-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>DefaultStatus</th>
-                    <th>PredictedStatus</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for _, person in df.iterrows() %}
-                <tr>
-                    <td>{{ person['Name'] }}</td>
-                    <td>{{ person['DefaultStatus'] }}</td>
-                    <td>{{ person['PredictedStatus'] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    
-    {% if accuracy %}
-    <div class="accuracy-table">
-        <h2>Accuracy Table</h2>
-        <p><strong>Accuracy:</strong> {{ accuracy['accuracy'] }}</p>
-        <pre>{{ accuracy['classification_report'] }}</pre>
-    </div>
-    {% endif %}
+        {% if accuracy %}
+        <div class="accuracy-table">
+            <h2>Accuracy Table</h2>
+            <p><strong>Accuracy:</strong> {{ accuracy['accuracy'] }}</p>
+            <pre>{{ accuracy['classification_report'] }}</pre>
+        </div>
+        {% endif %}
 
-    <div class="information-section">
-        <h2>Details</h2>
-        <p><strong>Gender:</strong> 0 represents Male, and 1 represents Female.</p>
-        <p><strong>Marital Status:</strong> 0 represents Single, 1 represents Married, and 2 represents Divorced.</p>
-        <p><strong>Employment Status:</strong> 0 represents Unemployed, 1 represents Part-time, and 2 represents Full-time.</p>
-        <p><strong>Default Status:</strong> 0 represents Not Defaulted, and 1 represents Defaulted.</p>
-        <p><strong>Predicted Status:</strong> The model's prediction on whether the individual is likely to default or not based on the provided features.</p>
-    </div>
+        <div class="information-section">
+            <h2>Details</h2>
+            <p><strong>Gender:</strong> 0 represents Male, and 1 represents Female.</p>
+            <p><strong>Marital Status:</strong> 0 represents Single, 1 represents Married, and 2 represents Divorced.
+            </p>
+            <p><strong>Employment Status:</strong> 0 represents Unemployed, 1 represents Part-time, and 2 represents
+                Full-time.</p>
+            <p><strong>Default Status:</strong> 0 represents Not Defaulted, and 1 represents Defaulted.</p>
+            <p><strong>Predicted Status:</strong> The model's prediction on whether the individual is likely to default
+                or not based on the provided features.</p>
+        </div>
     </div>
 </body>
+
 </html>

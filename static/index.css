@@ -1,38 +1,41 @@
+/* Header styling */
 h1 {
     text-align: left;
-    color: #007BFF; /* Header text color */
-    background-color: white; /* Header background color */
+    color: #007BFF;
+    background-color: white;
     padding: 20px;
     margin: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
-    border-radius: 12px; /* Add smoother edges to the header */
-    margin-bottom: 10px; /* Add space at the bottom of the header */
+    border-radius: 12px;
+    margin-bottom: 10px;
 }
 
 /* Container for the main content */
 .main-container {
-    background-color:  white; /* Set your desired background color */
-    padding: 20px; /* Adjust padding as needed */
-    border-radius: 12px; /* Add smoother edges */
-    margin-top: 20px; /* Add space between header and main container */
-    margin-bottom: 20px; /* Add space at the bottom of the main container */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 
 }
-
-body {
- background-color: #f4f4f4;
-}
-
 
 /* Colours */
-#dataset-table, #predicted-table, .accuracy-table pre, .information-section p {
-    background-color: #ffffff;  
+body {
+    background-color: #f4f4f4;
+}
+
+#dataset-table,
+#predicted-table,
+.accuracy-table pre,
+.information-section p {
+    background-color: #ffffff;
 }
 
 /* Dataset Table Styling */
-.dataset-title{
+.dataset-title {
     font-family: 'Arial', sans-serif;
 }
 
@@ -45,7 +48,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#dataset-table th, #dataset-table td {
+#dataset-table th,
+#dataset-table td {
     font-family: 'Arial', sans-serif;
     padding: 12px;
     text-align: center;
@@ -53,7 +57,7 @@ body {
 }
 
 /* Predicted Table styling */
-.DPS-title{
+.DPS-title {
     font-family: 'Arial', sans-serif;
 }
 
@@ -67,18 +71,19 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-#predicted-table th, #predicted-table td {
+#predicted-table th,
+#predicted-table td {
     padding: 10px;
     text-align: center;
 }
 
- /* Accuracy Table styling */
- .accuracy-table {
+/* Accuracy Table styling */
+.accuracy-table {
     font-family: 'Arial', sans-serif;
 }
 
 .accuracy-table pre {
-    display: inline-block; /* Make it behave like an inline block */
+    display: inline-block;
     border-collapse: collapse;
     margin-top: 10px;
     border-radius: 8px;
@@ -86,25 +91,25 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: center;
-    border: 1px solid #ddd; /* Border color */
+    border: 1px solid #ddd;
 }
 
 /* Information Section styling */
 .information-section {
     position: absolute;
-    top: calc(100%); /* Adjust the distance from the DPS-title as needed */
-    left: 35%; /* Adjust the distance from the DPS-title as needed */
+    top: calc(100%);
+    left: 35%;
     flex-wrap: wrap;
     font-family: 'Arial', sans-serif;
 }
 
 .information-section p {
-    width: 810px; /* Each paragraph takes the full width */
+    width: 810px;
     padding: 10px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: content-box; /* Include only content in the width, not padding and border */
+    box-sizing: content-box;
 }
 
 /* Buttons */
@@ -114,43 +119,43 @@ body {
 }
 
 .toggle-button {
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 
 .toggle-button button {
-    width: 220px; /* Set the width as needed */
+    width: 220px;
     background-color: #007BFF;
     color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 15px 30px; /* Adjust padding as needed for height and width */
-    font-size: 16px; /* Adjust font size as needed */
+    padding: 15px 30px;
+    font-size: 16px;
     font-family: 'Arial', sans-serif;
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+    transition: background-color 0.3s ease;
 }
 
 .toggle-button :hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3;
 }
 
 a button {
-    width: 200px; /* Set the width as needed */
+    width: 200px;
     background-color: #007BFF;
     color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    padding: 15px 30px; /* Adjust padding as needed for height and width */
-    font-size: 16px; /* Adjust font size as needed */
+    padding: 15px 30px;
+    font-size: 16px;
     font-family: 'Arial', sans-serif;
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
-    margin: auto; /* Auto margin to center horizontally */
-    position: absolute; /* Position absolute to center vertically */
+    transition: background-color 0.3s ease;
+    margin: auto;
+    position: absolute;
     left: 90%;
-    transform: translate(-50%, -150%); /* Adjust to center both horizontally and vertically */
+    transform: translate(-50%, -150%);
 }
 
 a button :hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: #0056b3;
 }

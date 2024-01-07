@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, classification_report
-
 from io import StringIO
 
 def analyze_credit_data(file_path):
