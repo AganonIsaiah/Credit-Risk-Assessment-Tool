@@ -1,18 +1,22 @@
-<!-- start.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credit Risk Finder</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='start.css') }}">
 </head>
 <body>
-    <h1>Welcome to Credit Risk Finder</h1>
-    <p>Please upload your dataset:</p>
+    <div class ="container">
+    <h1>Credit Risk Assessment Tool</h1>
+    <div class="box">
+    <h2>Please Upload Your Dataset (Must Be a .csv File):</h2>
     <form action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept=".csv" required>
         <input type="submit" value="Upload and Analyze">
     </form>
+    <h3>Created by Isaiah Aganon</h3>
+</div>
+</div>
 </body>
 </html>

@@ -1,11 +1,34 @@
 h1 {
-    text-align: center;
+    text-align: left;
     color: #007BFF; /* Header text color */
-    background-color: #ffffff; /* Header background color */
+    background-color: white; /* Header background color */
     padding: 20px;
     margin: 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
     font-family: 'Arial', sans-serif;
+    border-radius: 12px; /* Add smoother edges to the header */
+    margin-bottom: 10px; /* Add space at the bottom of the header */
+}
+
+/* Container for the main content */
+.main-container {
+    background-color:  white; /* Set your desired background color */
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 12px; /* Add smoother edges */
+    margin-top: 20px; /* Add space between header and main container */
+    margin-bottom: 20px; /* Add space at the bottom of the main container */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+
+}
+
+body {
+ background-color: #f4f4f4;
+}
+
+
+/* Colours */
+#dataset-table, #predicted-table, .accuracy-table pre, .information-section p {
+    background-color: #ffffff;  
 }
 
 /* Dataset Table Styling */
@@ -26,7 +49,7 @@ h1 {
     font-family: 'Arial', sans-serif;
     padding: 12px;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Predicted Table styling */
@@ -84,16 +107,34 @@ h1 {
     box-sizing: content-box; /* Include only content in the width, not padding and border */
 }
 
-/* * Back Button styling */
-.back-button-container {
-    position: absolute;
-    top: calc(100%); /* Adjust the distance from the information-section as needed */
-    left: 55%; /* Center horizontally */
-    transform: translateX(-50%); /* Move back 50% of its own width */
+/* Buttons */
+#dataset-table,
+#predicted-table {
+    display: none;
+}
+
+.toggle-button {
+    margin-top: 10px;   
+}
+
+.toggle-button button {
+    width: 220px; /* Set the width as needed */
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 15px 30px; /* Adjust padding as needed for height and width */
+    font-size: 16px; /* Adjust font size as needed */
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.toggle-button :hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
 a button {
-    display: block; /* Make it a block-level element */
     width: 200px; /* Set the width as needed */
     background-color: #007BFF;
     color: #ffffff;
@@ -103,9 +144,13 @@ a button {
     padding: 15px 30px; /* Adjust padding as needed for height and width */
     font-size: 16px; /* Adjust font size as needed */
     font-family: 'Arial', sans-serif;
-    position: relative; /* Add relative positioning */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+    margin: auto; /* Auto margin to center horizontally */
+    position: absolute; /* Position absolute to center vertically */
+    left: 90%;
+    transform: translate(-50%, -150%); /* Adjust to center both horizontally and vertically */
 }
 
-a button:hover {
+a button :hover {
     background-color: #0056b3; /* Darker shade on hover */
 }

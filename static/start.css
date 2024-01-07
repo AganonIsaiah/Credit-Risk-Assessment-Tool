@@ -1,0 +1,73 @@
+body {
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ensure full height of the viewport */
+}
+
+.container {
+    text-align: center;
+}
+
+.box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: calc(95%); /* Set the width to 95% of the viewport */
+    margin: 30px auto; /* Center the box */
+}
+
+h1 {
+    text-align: center;
+    color: #007BFF;
+    background-color: white;
+    padding: 30px;
+    margin: 30px 0; /* Adjust margin to separate from the edges */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    width: calc(95%); /* Set the width to 95% of the viewport */
+}
+
+h2 {
+    text-align: center;
+    margin: 15px auto;
+    font-size: 24px; /* Adjust font size as needed */
+}
+
+h3 {
+    margin: 15px auto;
+    font-size: 18px; /* Adjust font size as needed */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Set buttons to be side by side */
+    justify-content: space-between; /* Adjust as needed for spacing */
+    align-items: center;
+    width: calc(95%); /* Set the width to 95% of the viewport */
+    margin: 30px auto; /* Center the form */
+}
+
+/* Style only the file input button */
+input[type="file"]::file-selector-button,
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 20px; /* Adjust padding to provide more space for the text */
+    font-size: 16px; /* Adjust font size as needed */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center text */
+    transition: background-color 0.3s ease;
+    width: 50%; /* Set the width of each button */
+    overflow: hidden; /* Hide overflowing content */
+    margin-top: 15px; /* Add spacing between the buttons */
+}

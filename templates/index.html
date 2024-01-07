@@ -10,23 +10,46 @@
         document.addEventListener("DOMContentLoaded", function() {
             var dpsTitleElement = document.querySelector('.DPS-title');
             var informationSection = document.querySelector('.information-section');
+            var datasetTable = document.getElementById('dataset-table');
+            var predictedTable = document.getElementById('predicted-table');
 
-            if (dpsTitleElement && informationSection) {
-                var dpsTitleY = dpsTitleElement.getBoundingClientRect().bottom;
-                informationSection.style.top = dpsTitleY + "px";
-        }
+            function toggleTableVisibility(table) {
+                table.style.display = (table.style.display === 'none' || table.style.display === '') ? 'table' : 'none';
+            }
+
+            document.getElementById('toggle-dataset-table').addEventListener('click', function() {
+                toggleTableVisibility(datasetTable);
+                updateInformationSectionPosition();
+            });
+
+            document.getElementById('toggle-predicted-table').addEventListener('click', function() {
+                toggleTableVisibility(predictedTable);
+                updateInformationSectionPosition();
+            });
+
+            function updateInformationSectionPosition() {
+                var datasetTableHeight = datasetTable.offsetHeight;
+                informationSection.style.top = `calc(${datasetTableHeight + 250}px)`;
+            }
+            updateInformationSectionPosition();
         });
     </script>
 </head>
 <body>
     <h1>Credit Risk Predictor</h1>
 
+    
     <div class="back-button-container">
         <a href="{{ url_for('start') }}"><button><strong>Back to Start</strong></button></a>
     </div>
-    
+    <div class ="main-container"> 
     <div class="container section-box">
         <h2 class="dataset-title">Dataset</h2>
+
+        <div class="toggle-button">
+            <button id="toggle-dataset-table"><Strong>View Dataset Table</Strong></button>
+        </div>
+
         <table id="dataset-table" border="1">
             <thead>
                 <tr>
@@ -69,6 +92,11 @@
 
     <div class="container section-box">
         <h2 class="DPS-title">Default and Predicted Status</h2>
+
+        <div class="toggle-button">
+            <button id="toggle-predicted-table"><Strong>View Predicted Table</Strong></button>
+        </div>
+
         <table id="predicted-table" border="1" class="small-table">
             <thead>
                 <tr>
@@ -104,6 +132,7 @@
         <p><strong>Employment Status:</strong> 0 represents Unemployed, 1 represents Part-time, and 2 represents Full-time.</p>
         <p><strong>Default Status:</strong> 0 represents Not Defaulted, and 1 represents Defaulted.</p>
         <p><strong>Predicted Status:</strong> The model's prediction on whether the individual is likely to default or not based on the provided features.</p>
+    </div>
     </div>
 </body>
 </html>
