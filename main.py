@@ -4,8 +4,10 @@ from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import pandas as pd
 from analysis import analyze_credit_data
+from flask_frozen import Freezer;
 
 app = Flask(__name__)
+freezer = Freezer(app)
 
 # Configuration settings
 app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'sampledatasets')
@@ -66,4 +68,5 @@ def index():
 
 
 if __name__ == '__main__':
+    freezer.freeze()
     app.run(debug=True)
