@@ -29,3 +29,18 @@ The tool takes into account the following features for credit risk assessment:
 To use the Credit Risk Predictor, ensure that your dataset meets the following criteria:
 - The dataset should have a minimum of two entries.
 - At least one entry should have a 'DefaultStatus' of '1' (indicating a credit default) and another with '0' (indicating no default).
+
+### Prerequisites
+
+- Python 3.x
+- Flask
+- Pandas
+- scikit-learn
+- Werkzeug
+
+### Installation
+1. Clone the repository: git clone https://github.com/AganonIsaiah/Credit-Risk-Assessment-Tool.git
+2. Install dependencies: pip install -r requirements.txt
+3. Run app: python main.py
+4. Open: http://127.0.0.1:5000 
+
